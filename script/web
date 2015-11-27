@@ -1,0 +1,14 @@
+#!/bin/bash
+
+set -e
+
+HOST="${HOST:=127.0.0.1}"
+PORT="${PORT:=8080}"
+CONFIG_FILE="${CONFIG:=config/unicorn.rb}"
+RAILS_ENV="${RAILS_ENV:="development"}"
+
+exec bundle exec unicorn \
+	--config-file "$CONFIG_FILE" \
+	--host "$HOST" \
+	--port $PORT \
+	--env "$RAILS_ENV"
